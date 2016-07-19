@@ -5,7 +5,8 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="com.maki.project.ScrollingActivity">
+	tools:context="com.maki.project.ScrollingActivity"
+	>
 
 	<android.support.design.widget.AppBarLayout
 		android:id="@+id/app_bar"
@@ -24,15 +25,15 @@
 			<android.support.v7.widget.Toolbar
 				android:id="@+id/toolbar"
 				android:layout_width="match_parent"
-				android:contentInsetStart="0dp"
+				android:layout_height="?attr/actionBarSize"
+				android:background="?attr/colorPrimary"
 				android:contentInsetLeft="0dp"
+				android:contentInsetStart="0dp"
+				android:gravity="center_vertical"
 				app:contentInsetLeft="0dp"
 				app:contentInsetStart="0dp"
-				android:background="?attr/colorPrimary"
-				android:layout_height="?attr/actionBarSize"
-				app:layout_scrollFlags="scroll|enterAlways|snap"
 				app:elevation="0.0dip"
-				android:gravity="center_vertical"
+				app:layout_scrollFlags="scroll|enterAlways|snap"
 				app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 				<LinearLayout
@@ -44,7 +45,7 @@
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:src="@mipmap/ic_drawer_home" />
+						android:src="@mipmap/ic_drawer_home"/>
 
 					<FrameLayout
 						android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
 							android:layout_height="34.0dip"
 							android:layout_marginLeft="14.0dip"
 							android:layout_marginRight="4.0dip"
-							android:src="@mipmap/bili_default_avatar" />
+							android:src="@mipmap/bili_default_avatar"/>
 
 						<ImageView
 							android:id="@+id/iv_toolbar_account_badge"
@@ -64,7 +65,7 @@
 							android:layout_height="wrap_content"
 							android:layout_gravity="center|right|top"
 							android:background="@mipmap/ic_avatar_answer_badge"
-							android:visibility="gone" />
+							android:visibility="gone"/>
 
 						<ImageView
 							android:id="@+id/iv_toolbar_notice_badge"
@@ -73,7 +74,7 @@
 							android:layout_gravity="center|right|top"
 							android:layout_marginRight="1.0dip"
 							android:background="@drawable/shape_topbar_notice_badge"
-							android:visibility="visible" />
+							android:visibility="visible"/>
 					</FrameLayout>
 
 					<TextView
@@ -84,11 +85,29 @@
 						android:singleLine="true"
 						android:text="未登录"
 						android:textColor="@android:color/white"
-						android:textSize="16.0sp" />
+						android:textSize="16.0sp"/>
 				</LinearLayout>
+
+
 			</android.support.v7.widget.Toolbar>
+			<android.support.design.widget.TabLayout
+				android:id="@+id/tabs"
+				android:layout_marginTop="?attr/actionBarSize"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?attr/colorPrimary"
+				android:fillViewport="false"
+				app:tabBackground="?selectableItemBackground"
+				app:tabGravity="fill"
+				app:tabIndicatorColor="@color/white"
+				app:tabIndicatorHeight="2.0dp"
+				app:tabMode="fixed"
+				app:tabTextColor="@color/selector_tab_text_white"/>
+
+
 
 		</android.support.design.widget.CollapsingToolbarLayout>
+
 	</android.support.design.widget.AppBarLayout>
 
 	<include layout="@layout/content_scrolling"/>
