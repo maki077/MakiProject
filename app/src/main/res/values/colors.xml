@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">#3F51B5</color>
+	<color name="colorPrimaryDark">#303F9F</color>
+	<color name="colorAccent">#FF4081</color>
+
+	<color name="window_background">#FFF5F5F5</color>
+	<color name="gray_trans">#44999999</color>
+	<color name="gray_dark">#ff999999</color>
+
+	<color name="white_trans">#99ffffff</color>
+	<color name="white">#ffffffff</color>
+
+	<color name="theme_color_primary">#fffb7299</color>
+	<color name="theme_color_primary_dark">#ffb85671</color>
+	<color name="theme_color_primary_light">#ffb87891</color>
+	<color name="theme_color_primary_trans">#99f0486c</color>
+	<color name="theme_color_secondary">#fffb7299</color>
+	<color name="theme_color_secondary_dark">#ffb85671</color>
+	<color name="theme_color_text_highlight">#99f0486c</color>
+	<color name="theme_color_text_hint">#ff757575</color>
+	<color name="theme_color_view_background">#fffafafa</color>
+	<color name="theme_color_navigation_profilecover">#99f0486c</color>
+	<color name="yellow">#ffffd11b</color>
+	<color name="gray">#ffbbbbbb</color>
+
+
+</resources>

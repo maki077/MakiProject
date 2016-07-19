@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="ABC"/>
+
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="1_EditText"
+		/>
+
+	<android.support.design.widget.TextInputEditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="2_TextInputEditText"/>
+
+	<android.inputmethodservice.ExtractEditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="3_ExtractEditText"/>
+
+	<android.support.v7.widget.AppCompatEditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="4_AppCompatEditText"/>
+</LinearLayout>
