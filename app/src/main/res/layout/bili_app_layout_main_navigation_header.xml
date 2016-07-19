@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/drawer_profile_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_color_primary">
+
+        <ImageView
+            android:id="@+id/profile_cover_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bili_drawerbg_not_logined" />
+
+        <View
+            android:id="@+id/top"
+            android:layout_width="0.0dip"
+            android:layout_height="0.0dip"
+            android:layout_marginLeft="16.0dip"
+            android:layout_marginTop="16.0dip" />
+
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="70.0dip"
+            android:layout_height="70.0dip"
+            android:layout_alignLeft="@+id/top"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="@dimen/drawer_avatar_margin_top"
+            android:background="@mipmap/bili_default_avatar" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/top"
+            android:layout_below="@+id/user_avatar"
+            android:layout_marginBottom="12.0dip"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginTop="12.0dip"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/user_nick_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Bilibili"
+                    android:textColor="@color/white"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:id="@+id/level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4.0dip"
+                    android:layout_marginRight="4.0dip"
+                    android:background="@drawable/shape_white_border_background"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="1.0dip"
+                    android:paddingLeft="4.0dip"
+                    android:paddingRight="4.0dip"
+                    android:paddingTop="1.0dip"
+                    android:text="LV0"
+                    android:textColor="@color/white"
+                    android:textSize="8.0sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_user_gay_border"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/member_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="2.0dip"
+                android:background="@drawable/shape_drawer_member_status_background"
+                android:paddingBottom="1.0dip"
+                android:paddingLeft="4.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingTop="1.0dip"
+                android:text="正式会员"
+                android:textColor="@color/theme_color_primary"
+                android:textSize="9.0sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/user_coin_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10.0dip"
+                android:layout_marginTop="2.0dip"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="硬币 0"
+                android:textAppearance="@style/TextAppearance.App.Subtitle"
+                android:textColor="@color/white_trans"
+                android:textSize="13.0sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/switch_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/user_avatar"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="16.0dip"
+            android:paddingRight="@dimen/item_half_spacing"
+            android:src="@mipmap/ic_switch_night" />
+
+        <ImageView
+            android:id="@+id/notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/user_avatar"
+            android:layout_toLeftOf="@+id/switch_night"
+            android:src="@mipmap/ic_navigation_header_notification" />
+
+        <TextView
+            android:id="@+id/notification_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/notifications"
+            android:layout_marginLeft="-10.0dip"
+            android:layout_toRightOf="@+id/notifications"
+            android:background="@drawable/shape_navigation_hearbadge"
+            android:gravity="center"
+            android:text="22"
+            android:textColor="@color/theme_color_primary"
+            android:textSize="8.0sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <include layout="@layout/bili_app_layout_nav_menu_answer" />
+</LinearLayout>

@@ -90,4 +90,59 @@
 		"when a user tries to pick up one of cards.\n\n"
 	</string>
 	<string name="action_settings">Settings</string>
+
+	<string name="checkin">Checkin</string>
+
+	<string name="menu_night_mode">Night mode</string>
+	<string name="menu_night_mode_system">Follow system</string>
+	<string name="menu_night_mode_day">Day (always)</string>
+	<string name="menu_night_mode_night">Night (always)</string>
+	<string name="menu_night_mode_auto">Auto</string>
+
+
+
+	<string name="image_translucent_bar">Image Translucent Bar Training</string>
+	<string name="color_translucent_bar">Color Translucent Bar Training</string>
+	<string name="tool_bar">ToolBar Training</string>
+	<string name="menu_search">查找</string>
+	<string name="menu_notifications">通知</string>
+	<string name="menu_settings">设置</string>
+	<string name="menu_about_us">关于</string>
+	<string name="home_page">首页</string>
+	<string name="zhi_hu">知乎</string>
+	<string name="item_01">Item 1</string>
+	<string name="item_02">Item 2</string>
+	<string name="simple_navigation_drawer">SimpleNavigationDrawer</string>
+	<string name="simple_drawer">SimpleDrawer</string>
+	<string name="open">Open</string>
+	<string name="close">Close</string>
+
+	<string name="home_top_default_nickname">未登录</string>
+	<string name="logout">注销</string>
+	<string name="main_page_attentions">关注</string>
+	<string name="main_page_bangumi">番剧</string>
+	<string name="main_page_category">分区</string>
+	<string name="main_page_discover">发现</string>
+	<string name="main_page_game">游戏</string>
+	<string name="main_page_home">推荐</string>
+	<string name="main_page_live">直播</string>
+	<string name="main_page_my_center">我的</string>
+	<string name="menu_top_download_tips">离线列表</string>
+	<string name="menu_top_search_tips">搜索</string>
+	<string name="mycenter_coin_text">硬币：%s</string>
+	<string name="nav_favorites">我的收藏</string>
+	<string name="nav_following">关注的人</string>
+	<string name="nav_histories">历史记录</string>
+	<string name="nav_home">首页</string>
+	<string name="nav_login_click_avatar">点击头像登录</string>
+	<string name="nav_notifications">我的消息</string>
+	<string name="nav_offline_manager">离线缓存</string>
+	<string name="nav_pay">我的钱包</string>
+	<string name="nav_settings">设置与帮助</string>
+	<string name="title_game">游戏中心</string>
+	<string name="title_theme_store">主题选择</string>
+	<string name="title_app_wall">应用推荐</string>
+	<string name="nav_menu_answer_tips">进入只有会员才知道的世界</string>
+
+
 </resources>
