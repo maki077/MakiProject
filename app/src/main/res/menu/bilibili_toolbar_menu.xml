@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/toolbar_game_center"
+        android:icon="@mipmap/ic_menu_top_game_center"
+        android:title="@string/menu_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/toolbar_menu_download"
+        android:icon="@mipmap/ic_toolbar_menu_download"
+        android:title="@string/menu_notifications"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/toolbar_menu_search"
+        android:icon="@mipmap/ic_toolbar_menu_search"
+        android:orderInCategory="100"
+        android:title="@string/menu_settings"
+        app:showAsAction="ifRoom" />
+
+</menu>
