@@ -15,4 +15,14 @@
 	<dimen name="item_half_spacing">4.0dip</dimen>
 	<dimen name="item_spacing">8.0dip</dimen>
 
+	<!--login页面布局设置-->
+	<dimen name="login_tips_height">106.0dip</dimen>
+	<dimen name="login_edit_layout_height">47.0dip</dimen>
+	<dimen name="login_nick_name_auto_complete_view_height">46.0dip</dimen>
+	<dimen name="edit_bottom_line_height">1.0dip</dimen>
+	<dimen name="large_button_height">42.0dip</dimen>
+	<dimen name="auto_complete_nick_name_layout_height">30.0dip</dimen>
+	<dimen name="progress_dialog_layout_height">65.0dip</dimen>
+
+
 </resources>

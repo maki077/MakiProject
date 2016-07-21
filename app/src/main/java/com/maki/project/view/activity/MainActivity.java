@@ -31,7 +31,7 @@ import com.maki.project.view.fragment.Page1Fragment;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -39,32 +39,34 @@ import butterknife.OnClick;
  * Administrator on 2016/7/19.
  */
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.iv_toolbar_avatar)
+
+
+    @BindView(R.id.iv_toolbar_avatar)
     ImageView ivToolbarAvatar;
-    @Bind(R.id.iv_toolbar_account_badge)
+    @BindView(R.id.iv_toolbar_account_badge)
     ImageView ivToolbarAccountBadge;
-    @Bind(R.id.iv_toolbar_notice_badge)
+    @BindView(R.id.iv_toolbar_notice_badge)
     ImageView ivToolbarNoticeBadge;
-    @Bind(R.id.nick_name)
+    @BindView(R.id.nick_name)
     TextView nickName;
-    @Bind(R.id.ll_toolbar_navigation)
+    @BindView(R.id.ll_toolbar_navigation)
     LinearLayout llToolbarNavigation;
-    @Bind(R.id.tabs)
-    TabLayout tabs;
-    @Bind(R.id.toolbar_layout)
-    CollapsingToolbarLayout toolbarLayout;
-    @Bind(R.id.app_bar)
-    AppBarLayout appBar;
-    @Bind(R.id.fab)
-    FloatingActionButton fab;
-    @Bind(R.id.nav_view)
-    NavigationView navView;
-    @Bind(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.viewpager)
+    @BindView(R.id.tabs)
+    TabLayout tabs;
+    @BindView(R.id.toolbar_layout)
+    CollapsingToolbarLayout toolbarLayout;
+    @BindView(R.id.app_bar)
+    AppBarLayout appBar;
+    @BindView(R.id.viewpager)
     ViewPager viewpager;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.nav_view)
+    NavigationView navView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void intToolbar() {
-        //toolbar.inflateMenu(R.menu.bilibili_toolbar_menu); //这里加载无效
+        //toolbar.inflateMenu(R.menu.toolbar_home_menu); //这里加载无效
         toolbar.setTitle("Title");//AppBarLayout的高度大于toolbar+tablayout 才能显示
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.transparent));//标题颜色
         toolbar.setSubtitle("Subtitle");
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bilibili_toolbar_menu, menu);
+        getMenuInflater().inflate(R.menu.toolbar_home_menu, menu);
         return true;
     }
 
@@ -251,29 +253,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initViewPager(){
+    private void initViewPager() {
 
 
         ArrayList<Fragment> fgList = new ArrayList<>();
         fgList.add(new Page1Fragment());
         fgList.add(new Page1Fragment());
         fgList.add(new Page1Fragment());
-        String[] tabTitle = {"直播","动画","游戏"};
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager(),fgList,tabTitle);
+        String[] tabTitle = {"直播", "动画", "游戏"};
+        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager(), fgList, tabTitle);
         viewpager.setAdapter(adapter);
         tabs.setupWithViewPager(viewpager);//tab 和 viewpager同步
     }
 
 
-
-    private class MyViewPagerAdapter extends FragmentPagerAdapter{
+    private class MyViewPagerAdapter extends FragmentPagerAdapter {
         private ArrayList<Fragment> fgList;
         private String[] tabTitle;
 
-        private MyViewPagerAdapter(FragmentManager fm){
+        private MyViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-        private MyViewPagerAdapter(FragmentManager fm,ArrayList<Fragment> fgList,String[] tabTitle){
+
+        private MyViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> fgList, String[] tabTitle) {
             super(fm);
             this.fgList = fgList;
             this.tabTitle = tabTitle;
@@ -288,8 +290,10 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return fgList.size();
         }
+
         /**
          * 和pagerview同步
+         *
          * @param position
          * @return
          */
@@ -298,12 +302,6 @@ public class MainActivity extends AppCompatActivity {
             return tabTitle[position];
         }
     }
-
-
-
-
-
-
 
 
 }

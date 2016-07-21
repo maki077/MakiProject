@@ -24,5 +24,9 @@
 	<color name="yellow">#ffffd11b</color>
 	<color name="gray">#ffbbbbbb</color>
 
+	<color name="theme_color_window_background">#ffeaeaea</color>
+	<color name="color_pick_enable">#EFC5D1</color>
+
+
 
 </resources>

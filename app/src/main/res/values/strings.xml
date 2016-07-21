@@ -145,4 +145,16 @@
 	<string name="nav_menu_answer_tips">进入只有会员才知道的世界</string>
 
 
+
+	<!--登录页面-->
+	<string name="register_account">注册帐号</string>
+	<string name="login_text">登录</string>
+	<string name="please_input_your_nick_name">你的手机号/邮箱</string>
+	<string name="please_input_your_password">请输入密码</string>
+	<string name="register_doing">还没有注册功能...</string>
+	<string name="loading_title">登录中……</string>
+	<string name="forget_password">忘记密码?</string>
+	<string name="turn_back">返回</string>
+
+
 </resources>
