@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void intToolbar() {
         //toolbar.inflateMenu(R.menu.bilibili_toolbar_menu); //这里加载无效
-        toolbar.setTitle("Title");
+        toolbar.setTitle("Title");//AppBarLayout的高度大于toolbar+tablayout 才能显示
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.transparent));//标题颜色
         toolbar.setSubtitle("Subtitle");
         toolbar.setSubtitleTextColor(getResources().getColor(android.R.color.transparent));//副标题颜色
