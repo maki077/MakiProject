@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import com.maki.project.R;
 import com.maki.project.utils.ColorBitmapUtil3;
 import com.maki.project.utils.ToastUtil;
+import com.maki.project.view.adapter.AutoTextViewAdapter;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
@@ -45,6 +48,8 @@ import rx.schedulers.Schedulers;
  * 登录页面
  */
 public class LoginFragment extends Fragment {
+    private static final String TAG = LoginFragment.class.getSimpleName();
+
     @BindView(R.id.bili_logo)
     ImageView biliLogo;
     @BindView(R.id.iv_22)
@@ -101,8 +106,9 @@ public class LoginFragment extends Fragment {
 
     private Bitmap mNickNameFocusedBitmap;
     private Bitmap mPassWordFocusedBitmap;
-
-
+    //邮箱自动补全
+    private AutoTextViewAdapter mAutoTextViewAdapter;
+    private String[] mAUTO_EMAILS;
     //Rxjava
     Subscription mSubscription;
 
@@ -126,9 +132,35 @@ public class LoginFragment extends Fragment {
         ButterKnife.bind(this, mView);
         initViewValue();
         getBitmap();
-
+        initAutoTextAdapter();
 
         return mView;
+    }
+
+
+    private void initAutoTextAdapter() {
+        mAUTO_EMAILS = getActivity().getResources().getStringArray(R.array.mail_filter);
+        mAutoTextViewAdapter = new AutoTextViewAdapter(getActivity());
+        edUserNickname.setAdapter(mAutoTextViewAdapter);
+        edUserNickname.setThreshold(1);//输入1个字符时就开始检测，默认为2个
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int newContentHeight =rlLoginRootLayout.getHeight();
+        mNickNameAutoTextViewDropDownHeight = newContentHeight - (mNickNameLayoutHeightPx + mTipLayoutHeightPx + mEditBottomLineHeightPx);
+
+        if (mNickNameAutoTextViewDropDownHeight < 0) {
+            mNickNameAutoTextViewDropDownHeight = newContentHeight - mNickNameLayoutHeightPx - mEditBottomLineHeightPx;
+        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+               // edUserNickname.setDropDownHeight((int) mNickNameAutoTextViewDropDownHeight);
+                edUserNickname.setDropDownHeight((int) mNickNameAutoTextViewDropDownHeight);
+            }
+        });
+
+
     }
 
 
@@ -143,6 +175,7 @@ public class LoginFragment extends Fragment {
         edUserNickname.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.autocomplete_text_bg));
         vNickNameBottomLine.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         vPassWordBottomLine.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.gray_dark));
+
 
     }
 
@@ -179,7 +212,7 @@ public class LoginFragment extends Fragment {
 
 
         int color = ContextCompat.getColor(getActivity(), R.color.theme_color_secondary);
-        //效果等于与这个获取bitmap对象 再设置图形
+        //rxjava效果等于与这个获取bitmap对象 再设置图形
         // mNickNameFocusedBitmap = ColorBitmapUtil3.getColorBitmap(getActivity().getResources(), R.mipmap.ic_login_username_default, color, 255);
         mPassWordFocusedBitmap = ColorBitmapUtil3.getColorBitmap(getActivity().getResources(), R.mipmap.ic_login_password_default, color, 255);
     }
@@ -323,7 +356,6 @@ public class LoginFragment extends Fragment {
             // XML  android:singleLine="true"
             case R.id.ed_user_pwd: {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-
                     ToastUtil.showToast(getActivity(), "点击结束");
                     return true;
                 }
@@ -341,6 +373,16 @@ public class LoginFragment extends Fragment {
     @OnTextChanged(value = R.id.ed_user_nickname, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void onAfterTextChangedNickName(CharSequence s) {
         String nickName = s.toString();
+
+        //自动补全邮箱
+        mAutoTextViewAdapter.mList.clear();
+        if (nickName.contains("@")) {
+            autoAddEmails(nickName);
+            mAutoTextViewAdapter.notifyDataSetChanged();
+        }
+
+
+
         String passWord = edUserPwd.getText().toString();
         if (!TextUtils.isEmpty(nickName) && !TextUtils.isEmpty(passWord)) {
             btnLogin.setEnabled(true);
@@ -388,6 +430,45 @@ public class LoginFragment extends Fragment {
                 edUserPwd.requestFocus();
                 edUserPwd.setText("");
                 break;
+        }
+    }
+
+    /**
+     * 自动补全邮箱
+     * @param input
+     */
+    private void autoAddEmails(String input) {
+        Log.d(TAG,"input:" + input);
+        String autoEmail;
+        if (input != null && input.length() > 0) {
+            for (int i = 0; i < mAUTO_EMAILS.length; ++i) {
+                if (input.contains("@")) {//包含“@”则开始过滤
+                    //12@16
+                    //01234
+                    String filter = input.substring(input.indexOf("@") + 1, input.length());//获取过滤器，即根据输入“@”之后的内容过滤出符合条件的邮箱
+
+                    Log.d(TAG,"filter:" + filter);
+                    if (mAUTO_EMAILS[i].contains(filter)) {//符合过滤条件
+                        autoEmail = input.substring(0, input.indexOf("@") + 1) + mAUTO_EMAILS[i];//用户输入“@”之前的内容加上自动填充的内容即为最后的结果
+                        mAutoTextViewAdapter.mList.add(autoEmail);
+                    }
+                } else {
+                    autoEmail = input + mAUTO_EMAILS[i];
+                    mAutoTextViewAdapter.mList.add(autoEmail);
+                }
+            }
+            Log.d(TAG,"mAutoTextViewAdapter.mList.size():" + mAutoTextViewAdapter.mList.size());
+
+            float textHeight = getActivity().getResources().getDimension(R.dimen.auto_complete_nick_name_layout_height);
+            float sumHeight = mAutoTextViewAdapter.mList.size() * textHeight;
+
+            if (sumHeight >= mNickNameAutoTextViewDropDownHeight) {
+                edUserNickname.setDropDownHeight((int) mNickNameAutoTextViewDropDownHeight);
+            } else {
+                edUserNickname.setDropDownHeight((int) sumHeight);
+            }
+            Log.d(TAG,"mNickNameAutoTextViewDropDownHeight:" + mNickNameAutoTextViewDropDownHeight);
+            Log.d(TAG,"sumHeight:" + sumHeight);
         }
     }
 
