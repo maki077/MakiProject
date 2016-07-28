@@ -139,14 +139,19 @@ public class LoginFragment extends Fragment {
 
 
     private void initAutoTextAdapter() {
-        mAUTO_EMAILS = getActivity().getResources().getStringArray(R.array.mail_filter);
+        mAUTO_EMAILS = getActivity()
+                .getResources()
+                .getStringArray(R.array.mail_filter);
         mAutoTextViewAdapter = new AutoTextViewAdapter(getActivity());
         edUserNickname.setAdapter(mAutoTextViewAdapter);
         edUserNickname.setThreshold(1);//输入1个字符时就开始检测，默认为2个
 
         DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int newContentHeight =rlLoginRootLayout.getHeight();
+        getActivity()
+                .getWindowManager()
+                .getDefaultDisplay()
+                .getMetrics(dm);
+        int newContentHeight = rlLoginRootLayout.getHeight();
         mNickNameAutoTextViewDropDownHeight = newContentHeight - (mNickNameLayoutHeightPx + mTipLayoutHeightPx + mEditBottomLineHeightPx);
 
         if (mNickNameAutoTextViewDropDownHeight < 0) {
@@ -155,8 +160,8 @@ public class LoginFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-               // edUserNickname.setDropDownHeight((int) mNickNameAutoTextViewDropDownHeight);
                 edUserNickname.setDropDownHeight((int) mNickNameAutoTextViewDropDownHeight);
+                //  edUserNickname.setDropDownHeight((int) 100);
             }
         });
 
@@ -168,9 +173,15 @@ public class LoginFragment extends Fragment {
         mNickNameHasFocus = true;
         mPassWordHasFocus = false;
 
-        mTipLayoutHeightPx = getActivity().getResources().getDimension(R.dimen.login_tips_height);
-        mNickNameLayoutHeightPx = getActivity().getResources().getDimension(R.dimen.login_edit_layout_height);
-        mEditBottomLineHeightPx = getActivity().getResources().getDimension(R.dimen.edit_bottom_line_height);
+        mTipLayoutHeightPx = getActivity()
+                .getResources()
+                .getDimension(R.dimen.login_tips_height);
+        mNickNameLayoutHeightPx = getActivity()
+                .getResources()
+                .getDimension(R.dimen.login_edit_layout_height);
+        mEditBottomLineHeightPx = getActivity()
+                .getResources()
+                .getDimension(R.dimen.edit_bottom_line_height);
 
         edUserNickname.setDropDownBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.autocomplete_text_bg));
         vNickNameBottomLine.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
@@ -183,32 +194,39 @@ public class LoginFragment extends Fragment {
      * Filter — 过滤，过滤掉没有通过谓词测试的数据项，只发射通过测试的
      */
     private void getBitmap() {
-        mSubscription= createBitmapObservable().subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).filter(new Func1<Bitmap, Boolean>() {
-            @Override
-            public Boolean call(Bitmap bitmap) {
-                return bitmap != null && !bitmap.isRecycled();  //返回真假  满足这条件的对象传递下去
-            }
-        }).map(new Func1<Bitmap, Drawable>() {
-            @Override
-            public Drawable call(Bitmap bitmap) {
-                mNickNameFocusedBitmap = bitmap;
-                Drawable drawable = new BitmapDrawable(getActivity().getResources(), bitmap);
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                return drawable;
-            }
-        }).filter(new Func1<Drawable, Boolean>() {
-            @Override
-            public Boolean call(Drawable drawable) {
-                return drawable != null;
-            }
-        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Drawable>() {
-            @Override
-            public void call(Drawable drawable) {
-                if (mNickNameHasFocus) {
-                    edUserNickname.setCompoundDrawables(drawable, null, null, null);
-                }
-            }
-        });
+        mSubscription = createBitmapObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .filter(new Func1<Bitmap, Boolean>() {
+                    @Override
+                    public Boolean call(Bitmap bitmap) {
+                        return bitmap != null && !bitmap.isRecycled();  //返回真假  满足这条件的对象传递下去
+                    }
+                })
+                .map(new Func1<Bitmap, Drawable>() {
+                    @Override
+                    public Drawable call(Bitmap bitmap) {
+                        mNickNameFocusedBitmap = bitmap;
+                        Drawable drawable = new BitmapDrawable(getActivity().getResources(), bitmap);
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        return drawable;
+                    }
+                })
+                .filter(new Func1<Drawable, Boolean>() {
+                    @Override
+                    public Boolean call(Drawable drawable) {
+                        return drawable != null;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Drawable>() {
+                    @Override
+                    public void call(Drawable drawable) {
+                        if (mNickNameHasFocus) {
+                            edUserNickname.setCompoundDrawables(drawable, null, null, null);
+                        }
+                    }
+                });
 
 
         int color = ContextCompat.getColor(getActivity(), R.color.theme_color_secondary);
@@ -316,7 +334,9 @@ public class LoginFragment extends Fragment {
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     edUserPwd.setCompoundDrawables(drawable, null, null, null);
 
-                    vPassWordBottomLine.setBackgroundColor(getActivity().getResources().getColor(R.color.gray_dark));
+                    vPassWordBottomLine.setBackgroundColor(getActivity()
+                            .getResources()
+                            .getColor(R.color.gray_dark));
 
                     iv22.setImageResource(R.mipmap.ic_22);
                     iv33.setImageResource(R.mipmap.ic_33);
@@ -382,8 +402,9 @@ public class LoginFragment extends Fragment {
         }
 
 
-
-        String passWord = edUserPwd.getText().toString();
+        String passWord = edUserPwd
+                .getText()
+                .toString();
         if (!TextUtils.isEmpty(nickName) && !TextUtils.isEmpty(passWord)) {
             btnLogin.setEnabled(true);
         } else {
@@ -404,7 +425,9 @@ public class LoginFragment extends Fragment {
     @OnTextChanged(value = R.id.ed_user_pwd, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void onAfterTextChangedPassWord(CharSequence s) {
         String passWord = s.toString();
-        String nickName = edUserNickname.getText().toString();
+        String nickName = edUserNickname
+                .getText()
+                .toString();
         if (!TextUtils.isEmpty(nickName) && !TextUtils.isEmpty(passWord)) {
             btnLogin.setEnabled(true);
         } else {
@@ -435,10 +458,11 @@ public class LoginFragment extends Fragment {
 
     /**
      * 自动补全邮箱
+     *
      * @param input
      */
     private void autoAddEmails(String input) {
-        Log.d(TAG,"input:" + input);
+        Log.d(TAG, "input:" + input);
         String autoEmail;
         if (input != null && input.length() > 0) {
             for (int i = 0; i < mAUTO_EMAILS.length; ++i) {
@@ -447,7 +471,7 @@ public class LoginFragment extends Fragment {
                     //01234
                     String filter = input.substring(input.indexOf("@") + 1, input.length());//获取过滤器，即根据输入“@”之后的内容过滤出符合条件的邮箱
 
-                    Log.d(TAG,"filter:" + filter);
+                    Log.d(TAG, "filter:" + filter);
                     if (mAUTO_EMAILS[i].contains(filter)) {//符合过滤条件
                         autoEmail = input.substring(0, input.indexOf("@") + 1) + mAUTO_EMAILS[i];//用户输入“@”之前的内容加上自动填充的内容即为最后的结果
                         mAutoTextViewAdapter.mList.add(autoEmail);
@@ -457,9 +481,11 @@ public class LoginFragment extends Fragment {
                     mAutoTextViewAdapter.mList.add(autoEmail);
                 }
             }
-            Log.d(TAG,"mAutoTextViewAdapter.mList.size():" + mAutoTextViewAdapter.mList.size());
+            Log.d(TAG, "mAutoTextViewAdapter.mList.size():" + mAutoTextViewAdapter.mList.size());
 
-            float textHeight = getActivity().getResources().getDimension(R.dimen.auto_complete_nick_name_layout_height);
+            float textHeight = getActivity()
+                    .getResources()
+                    .getDimension(R.dimen.auto_complete_nick_name_layout_height);
             float sumHeight = mAutoTextViewAdapter.mList.size() * textHeight;
 
             if (sumHeight >= mNickNameAutoTextViewDropDownHeight) {
@@ -467,8 +493,8 @@ public class LoginFragment extends Fragment {
             } else {
                 edUserNickname.setDropDownHeight((int) sumHeight);
             }
-            Log.d(TAG,"mNickNameAutoTextViewDropDownHeight:" + mNickNameAutoTextViewDropDownHeight);
-            Log.d(TAG,"sumHeight:" + sumHeight);
+            Log.d(TAG, "mNickNameAutoTextViewDropDownHeight:" + mNickNameAutoTextViewDropDownHeight);
+            Log.d(TAG, "sumHeight:" + sumHeight);
         }
     }
 

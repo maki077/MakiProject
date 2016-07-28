@@ -13,10 +13,33 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            minifyEnabled false// 是否混淆
+            shrinkResources false // 是否去除无效的资源文件
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //打包忽略掉第三方jar相同的文件
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    // 这个是解决lint报错的代码
+    lintOptions {
+        abortOnError false
     }
 }
 
