@@ -7,7 +7,7 @@ import com.maki.project.base.iview.IBaseView;
 import rx.Subscription;
 
 /**
- * 基础presenter
+ * 基础presenter  P持有view对象 构造方法内传值IView iv = View
  */
 public abstract class BasePresenter<T extends IBaseView>  {
 

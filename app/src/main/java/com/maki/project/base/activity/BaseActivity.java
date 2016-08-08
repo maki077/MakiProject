@@ -10,7 +10,7 @@ import com.maki.project.base.presenter.BasePresenter;
 import butterknife.ButterKnife;
 
 /**
- * Activity基类
+ * Activity基类 V持有P
  */
 public abstract class BaseActivity <T extends BasePresenter> extends AppCompatActivity {
     protected String TAG = this.getClass().getSimpleName();
