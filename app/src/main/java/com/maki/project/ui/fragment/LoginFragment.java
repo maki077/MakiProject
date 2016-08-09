@@ -1,4 +1,4 @@
-package com.maki.project.view.fragment;
+package com.maki.project.ui.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,9 +25,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.maki.project.R;
+import com.maki.project.ui.adapter.AutoTextViewAdapter;
 import com.maki.project.utils.ColorBitmapUtil3;
 import com.maki.project.utils.ToastUtil;
-import com.maki.project.view.adapter.AutoTextViewAdapter;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;

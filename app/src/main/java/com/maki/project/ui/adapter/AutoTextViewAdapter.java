@@ -1,4 +1,4 @@
-package com.maki.project.view.adapter;
+package com.maki.project.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

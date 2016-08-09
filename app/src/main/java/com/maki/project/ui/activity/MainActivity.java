@@ -1,4 +1,4 @@
-package com.maki.project.view.activity;
+package com.maki.project.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.maki.project.R;
-import com.maki.project.view.fragment.Page1Fragment;
+import com.maki.project.ui.fragment.Page1Fragment;
 
 import java.util.ArrayList;
 

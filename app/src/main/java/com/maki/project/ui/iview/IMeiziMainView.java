@@ -1,4 +1,4 @@
-package com.maki.project.view.iview;
+package com.maki.project.ui.iview;
 
 import com.maki.project.base.iview.IBaseView;
 import com.maki.project.model.bean.Meizi;

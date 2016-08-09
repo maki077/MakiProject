@@ -1,4 +1,4 @@
-package com.maki.project.view.activity;
+package com.maki.project.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 
 import com.maki.project.R;
 import com.maki.project.utils.ToastUtil;
-import com.maki.project.view.fragment.LoginFragment;
+import com.maki.project.ui.fragment.LoginFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

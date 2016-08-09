@@ -1,4 +1,4 @@
-package com.maki.project.view.activity;
+package com.maki.project.ui.activity;
 
 import com.maki.project.base.activity.ToolBarActivity;
 import com.maki.project.presenter.MeiziMainPresenter;
