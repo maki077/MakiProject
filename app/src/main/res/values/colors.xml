@@ -10,6 +10,8 @@
 
 	<color name="white_trans">#99ffffff</color>
 	<color name="white">#ffffffff</color>
+	<color name="black">#000000</color>
+	<color name="grey">#515151</color>
 
 	<color name="theme_color_primary">#fffb7299</color>
 	<color name="theme_color_primary_dark">#ffb85671</color>
