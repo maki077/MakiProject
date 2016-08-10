@@ -12,7 +12,7 @@ import rx.Observable;
  */
 public interface IGankRetrofit {
     public static final String HOST = "http://gank.io/api/";
-    public static final int MEIZI_SIZE = 20;
+    public static final int MEIZI_SIZE = 5;
     public static final int GANK_SIZE = 40;
 
 

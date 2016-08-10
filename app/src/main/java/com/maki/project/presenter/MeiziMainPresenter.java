@@ -51,7 +51,7 @@ public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
                 .build();
 
         IGankRetrofit iGankRetrofit = retrofit.create(IGankRetrofit.class);
-        Observable<GankResultBean<Meizi>> observable = iGankRetrofit.getMeiziData(1);
+        Observable<GankResultBean<Meizi>> observable = iGankRetrofit.getMeiziData(page);
 
         subscription = observable
                 .subscribeOn(Schedulers.io())
@@ -64,13 +64,19 @@ public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        iView.showErrorView();
+                        iView.hideProgress();
                     }
 
                     @Override
                     public void onNext(GankResultBean<Meizi> meiziGankResultBean) {
                         if(!meiziGankResultBean.isError()){
-                            iView.showMeiziList( meiziGankResultBean.getResults());
+                            if (meiziGankResultBean.getResults().size() == 0){
+                                iView.showNoMoreData();
+                            }else {
+                                iView.showMeiziList(meiziGankResultBean.getResults());
+                            }
+                            iView.hideProgress();
                         }
                     }
                 });
