@@ -13,6 +13,9 @@ import com.maki.project.presenter.MeiziMainPresenter;
 import com.maki.project.ui.adapter.MeiziAdapter;
 import com.maki.project.ui.iview.IMeiziMainView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -22,7 +25,7 @@ import butterknife.OnClick;
 public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> implements IMeiziMainView {
     private MeiziAdapter adapter;
     private MeiziMainPresenter presenter;
-    private Meizi meiziResult;
+    private List<Meizi> meiziList;
 
 
     @BindView(R.id.recycler_view)
@@ -60,8 +63,12 @@ public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> imple
      */
     @Override
     public void initView() {
-        meiziResult = new Meizi();
-        adapter = new MeiziAdapter(meiziResult.getResults(),this);
+        meiziList = new ArrayList<>();
+        meiziList.add(getMeiziData());
+        meiziList.add(getMeiziData());
+        meiziList.add(getMeiziData());
+        meiziList.add(getMeiziData());
+        adapter = new MeiziAdapter(meiziList,this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -70,6 +77,16 @@ public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> imple
         adapter.notifyDataSetChanged();
         presenter.fetchMeiziData(1);
     }
+
+    int iii=0;
+
+    public Meizi  getMeiziData(){
+        Meizi  bean= new Meizi();
+        bean.set_id((iii++)+"");
+        return bean;
+
+    }
+
 
     @Override
     public void showProgress() {
@@ -92,9 +109,9 @@ public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> imple
     }
 
     @Override
-    public void showMeiziList(Meizi meiziResult) {
-       this.meiziResult.getResults().clear();
-        this.meiziResult.setResults(meiziResult.getResults());
+    public void showMeiziList(List<Meizi> meiziList) {
+        this.meiziList.clear();
+        this.meiziList.addAll(meiziList);
         adapter.notifyDataSetChanged();
 
     }

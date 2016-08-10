@@ -22,11 +22,11 @@ import butterknife.ButterKnife;
  * Administrator on 2016/8/9.
  */
 public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziHolder> {
-    List<Meizi.ResultsBean> list;
+    List<Meizi> list;
     Context context;
 
 
-    public MeiziAdapter(List<Meizi.ResultsBean> list, Context context) {
+    public MeiziAdapter(List<Meizi> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -41,12 +41,12 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziHolder>
 
     @Override
     public void onBindViewHolder(MeiziHolder holder, int position) {
-        Meizi.ResultsBean meizi = list.get(position);
+        Meizi meizi = list.get(position);
         holder.card.setTag(meizi);
         int red = (int) (Math.random() * 255);
         int green = (int) (Math.random() * 255);
         int blue = (int) (Math.random() * 255);
-        holder.ivMeizi.setBackgroundColor(Color.argb(204, red, green, blue));
+        holder.ivMeizi.setBackgroundColor(Color.argb(204, red, green, blue)); //随机背景颜色
         Glide
                 .with(context)
                 .load(meizi.getUrl())
@@ -54,13 +54,15 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziHolder>
                 .into(holder.ivMeizi);
 
         holder.tvWho.setText(meizi.getWho());
-        holder.tvAvatar.setText(meizi
-                .getWho()
-                .substring(0, 1)
-                .toUpperCase());
+
+//        holder.tvAvatar.setText(meizi
+//                .getWho()
+//                .substring(0, 1)
+//                .toUpperCase());
         holder.tvDesc.setText(meizi.getDesc());
         holder.tvTime.setText(meizi.getPublishedAt());
-        //holder.tvAvatar.setVisibility(View.GONE);
+//        holder.tvAvatar.setVisibility(View.GONE);
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.maki.project.http;
 
+import com.maki.project.model.bean.GankResultBean;
 import com.maki.project.model.bean.Meizi;
 
 import retrofit2.http.GET;
@@ -17,5 +18,5 @@ public interface IGankRetrofit {
 
     // http://gank.io/api/data/数据类型/请求个数/第几页
     @GET("data/福利/"+MEIZI_SIZE+"/{page}")
-    Observable<Meizi> getMeiziData(@Path("page") int page);
+    Observable<GankResultBean<Meizi>> getMeiziData(@Path("page") int page);
 }

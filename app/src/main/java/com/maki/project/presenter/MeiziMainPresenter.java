@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.maki.project.base.presenter.BasePresenter;
 import com.maki.project.http.IGankRetrofit;
+import com.maki.project.model.bean.GankResultBean;
 import com.maki.project.model.bean.Meizi;
 import com.maki.project.ui.iview.IMeiziMainView;
 
@@ -35,8 +36,8 @@ public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
         OkHttpClient client;
         // Log信息
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        //loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        //loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         // OkHttp3.0的使用方式
         client = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
@@ -50,12 +51,12 @@ public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
                 .build();
 
         IGankRetrofit iGankRetrofit = retrofit.create(IGankRetrofit.class);
-        Observable<Meizi> observable = iGankRetrofit.getMeiziData(1);
+        Observable<GankResultBean<Meizi>> observable = iGankRetrofit.getMeiziData(1);
 
         subscription = observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Meizi>() {
+                .subscribe(new Subscriber<GankResultBean<Meizi>>() {
                     @Override
                     public void onCompleted() {
 
@@ -67,8 +68,10 @@ public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
                     }
 
                     @Override
-                    public void onNext(Meizi meizi) {
-                        iView.showMeiziList(meizi);
+                    public void onNext(GankResultBean<Meizi> meiziGankResultBean) {
+                        if(!meiziGankResultBean.isError()){
+                            iView.showMeiziList( meiziGankResultBean.getResults());
+                        }
                     }
                 });
     }
