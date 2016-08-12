@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Administrator on 2016/8/8.
+ * Meizi主页
  */
 public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> implements IMeiziMainView ,SwipeRefreshLayout.OnRefreshListener{
     private MeiziAdapter adapter;

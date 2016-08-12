@@ -19,7 +19,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Administrator on 2016/8/8.
+ * meizi主页的Presenter
  */
 public class MeiziMainPresenter extends BasePresenter<IMeiziMainView> {
     public MeiziMainPresenter(Context context, IMeiziMainView iView) {
