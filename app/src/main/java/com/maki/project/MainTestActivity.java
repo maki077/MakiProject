@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Administrator on 2016/7/19.
+ * Administrator on 2016/7/19a.
  */
 public class MainTestActivity extends AppCompatActivity{
     @Override
