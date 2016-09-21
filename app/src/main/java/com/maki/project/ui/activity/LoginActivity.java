@@ -1,5 +1,6 @@
 package com.maki.project.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -87,6 +88,9 @@ public class LoginActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.forget_password: {
                 ToastUtil.showToast(LoginActivity.this, getResources().getString(R.string.forget_password));
+                Intent i  = new Intent();
+                i.setClass(this,MainActivity.class);
+                startActivity(i);
                 break;
             }
         }

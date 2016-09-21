@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Meizi主页
  */
-public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> implements IMeiziMainView ,SwipeRefreshLayout.OnRefreshListener{
+public class MeiziMainActivity extends ToolBarActivity<MeiziMainPresenter> implements IMeiziMainView,SwipeRefreshLayout.OnRefreshListener{
     private MeiziAdapter adapter;
     private MeiziMainPresenter presenter;
     private List<Meizi> meiziList;

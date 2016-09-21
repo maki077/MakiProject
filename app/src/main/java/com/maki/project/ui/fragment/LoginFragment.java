@@ -1,5 +1,6 @@
 package com.maki.project.ui.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -25,6 +26,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.maki.project.R;
+import com.maki.project.ui.activity.MeiziMainActivity;
 import com.maki.project.ui.adapter.AutoTextViewAdapter;
 import com.maki.project.utils.ColorBitmapUtil3;
 import com.maki.project.utils.ToastUtil;
@@ -442,7 +444,7 @@ public class LoginFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.ll_clear_name_layout, R.id.ll_clear_pwd_layout})
+    @OnClick({R.id.ll_clear_name_layout, R.id.ll_clear_pwd_layout,R.id.btn_register})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_clear_name_layout:
@@ -453,6 +455,11 @@ public class LoginFragment extends Fragment {
                 edUserPwd.requestFocus();
                 edUserPwd.setText("");
                 break;
+            case R.id.btn_register:
+                Intent i  = new Intent();
+                i.setClass(getActivity(),MeiziMainActivity.class);
+                startActivity(i);
+            break;
         }
     }
 
